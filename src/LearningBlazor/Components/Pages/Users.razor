@@ -1,7 +1,5 @@
 ﻿@page "/users"
-@using Microsoft.AspNetCore.Components.QuickGrid
-@using System.Runtime.InteropServices.JavaScript
-@using _Imports = Radzen.Blazor._Imports
+
 @rendermode InteractiveServer
 
 <PageTitle>用户信息</PageTitle>
@@ -10,12 +8,26 @@
 
 <p>查看和管理用户信息</p>
 
-<QuickGrid Items="@users" Class="table table-bordered table-light">
-    <PropertyColumn Property="@(p => p.UserName)" Sortable="true"></PropertyColumn>
-    <PropertyColumn Property="@(p => p.Address)" Sortable="true"></PropertyColumn>
-    <PropertyColumn Property="@(p => p.Birthday)" Sortable="true"></PropertyColumn>
-    <PropertyColumn Property="@(p => p.RegisteredAt)" Sortable="true"></PropertyColumn>
-</QuickGrid>
+<RadzenCard class="m-2">
+    <h4>使用 QuickGrid</h4>
+    <QuickGrid Items="@users" Class="table table-bordered table-light">
+        <PropertyColumn Property="@(p => p.UserName)" Sortable="true"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.Address)" Sortable="true"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.Birthday)" Sortable="true"></PropertyColumn>
+        <PropertyColumn Property="@(p => p.RegisteredAt)" Sortable="true"></PropertyColumn>
+    </QuickGrid>
+    <h4>使用 RadzenDataGrid</h4>
+    <RadzenDataGrid TItem="UserInfo" Data="users" AllowFiltering="true">
+        <Columns>
+            <RadzenDataGridColumn TItem="UserInfo" Property="UseName" Title="用户名" Width="120px"></RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="UserInfo" Property="Address" Title="地址" Width="120px"></RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="UserInfo" Property="Birthday" Title="出生年月" Width="120px"></RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="UserInfo" Property="RegisteredAt" Title="注册时间" Width="120px"></RadzenDataGridColumn>
+        </Columns>
+    </RadzenDataGrid>
+</RadzenCard>
+
+
 
 
 @code {
