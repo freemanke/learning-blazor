@@ -1,0 +1,18 @@
+﻿@page "/"
+
+<PageTitle>学习笔记</PageTitle>
+
+<h12>Blazor 学习笔记</h12>
+<RadzenRow>
+    <RadzenListBox TValue="string" Data="@items"></RadzenListBox>
+</RadzenRow>
+
+@code
+{
+    private readonly IEnumerable<string> items =
+    [
+        "https://fonts.google.com/icons",
+        "https://blazor.radzen.com/icon?theme=standard",
+        "https://learn.microsoft.com/en-us/aspnet/core/blazor/components/rendering?view=aspnetcore-8.0"
+    ];
+}

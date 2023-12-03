@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+
+<RadzenLayout>
+    <RadzenHeader>
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="0">
+            <RadzenSidebarToggle Click="@(() => sidebarExpanded = !sidebarExpanded)" />
+            <RadzenLabel Text="Blazor on dotnet 8" />
+        </RadzenStack>
+    </RadzenHeader>
+    <RadzenSidebar @bind-Expanded="@sidebarExpanded">
+        <RadzenPanelMenu>
+            <RadzenPanelMenuItem Text="Home" Path="/" Icon="home" />
+            <RadzenPanelMenuItem Text="Users" Path="users" Icon="info" />
+            <RadzenPanelMenuItem Text="Counter" Path="counter" Icon="account_box" />
+            <RadzenPanelMenuItem Text="Weather" Path="weather" Icon="accessibility" />
+        </RadzenPanelMenu>
+    </RadzenSidebar>
+    <RadzenBody>
+        <div>
+            @Body
+        </div>
+    </RadzenBody>
+    <RadzenFooter Style="padding: 2px">
+    稻城亚丁科技有限责任公司©️ 2023
+    </RadzenFooter>
+</RadzenLayout>
+
+@code {
+    bool sidebarExpanded = true;
+}

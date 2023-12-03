@@ -1,0 +1,44 @@
+﻿@page "/users"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using System.Runtime.InteropServices.JavaScript
+@using _Imports = Radzen.Blazor._Imports
+@rendermode InteractiveServer
+
+<PageTitle>用户信息</PageTitle>
+
+<h1>用户信息</h1>
+
+<p>查看和管理用户信息</p>
+
+<QuickGrid Items="@users" Class="table table-bordered table-light">
+    <PropertyColumn Property="@(p => p.UserName)" Sortable="true"></PropertyColumn>
+    <PropertyColumn Property="@(p => p.Address)" Sortable="true"></PropertyColumn>
+    <PropertyColumn Property="@(p => p.Birthday)" Sortable="true"></PropertyColumn>
+    <PropertyColumn Property="@(p => p.RegisteredAt)" Sortable="true"></PropertyColumn>
+</QuickGrid>
+
+
+@code {
+    private IQueryable<UserInfo> users  = new List<UserInfo>().AsQueryable();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(1);
+        users = new List<UserInfo>
+        {
+           new(){UserName = "freemanke", Address = "Bejing Chaoyang"},
+           new(){UserName = "kekexin", Address = "Bejing Chaoyang"},
+           new(){UserName = "zhy", Address = "Bejing Chaoyang"},
+
+        }.AsQueryable();
+    }
+
+    private class UserInfo
+    {
+        public string UserName { get; init; } = "";
+        public DateTime Birthday { get; set; }= DateTime.Now;
+        public DateTime RegisteredAt { get; set; } = DateTime.Now;
+        public string Address { get; init; } = "";
+    }
+
+}
