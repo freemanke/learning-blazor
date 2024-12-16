@@ -44,6 +44,8 @@ public class Program
 
         var app = builder.Build();
 
+        app.UseStatusCodePagesWithRedirects(Constants.RouteNotFound);
+        
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
