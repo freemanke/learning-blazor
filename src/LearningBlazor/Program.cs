@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using LearningBlazor.Components;
 using LearningBlazor.Components.Account;
 using LearningBlazor.Data;
+using Radzen;
 
 namespace LearningBlazor;
 
@@ -16,7 +17,7 @@ public class Program
         // Add services to the container.
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
-
+        builder.Services.AddRadzenComponents();
         builder.Services.AddCascadingAuthenticationState();
         builder.Services.AddScoped<IdentityUserAccessor>();
         builder.Services.AddScoped<IdentityRedirectManager>();

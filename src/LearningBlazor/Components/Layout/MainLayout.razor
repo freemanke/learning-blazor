@@ -1,23 +1,28 @@
-﻿@inherits LayoutComponentBase
+﻿@using Humanizer
+@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+<RadzenLayout>
+    <RadzenHeader>
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="0">
+            <RadzenSidebarToggle Click="@(() => sidebarExpanded = true)" />
+            <RadzenLabel Text="脊髓刺激程控软件" />
+        </RadzenStack>
+    </RadzenHeader>
+    <RadzenSidebar Responsive="false" Style="width: 200px">
+        <RadzenPanelMenu DisplayStyle="@(sidebarExpanded ? MenuItemDisplayStyle.IconAndText : MenuItemDisplayStyle.Icon)" ShowArrow="false">
+            <RadzenPanelMenuItem Text="患者管理" Icon="home" Path="/patients"/>
+            <RadzenPanelMenuItem Text="设备管理" Icon="dashboard" Path="/devices" />
+            <RadzenPanelMenuItem Text="程序管理" Icon="groups" Path="/groups" />
+            <RadzenPanelMenuItem Text="阻抗测量" Icon="color_lens" Path="/impedance" />
+            <RadzenPanelMenuItem Text="报告管理" Icon="color_lens" Path="/reports"/>
+        </RadzenPanelMenu>
+    </RadzenSidebar>
+    <RadzenBody>
             @Body
-        </article>
-    </main>
-</div>
+    </RadzenBody>
+</RadzenLayout>
 
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
-</div>
+@code 
+{
+    bool sidebarExpanded =true;
+}

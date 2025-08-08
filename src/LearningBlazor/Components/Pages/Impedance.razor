@@ -1,0 +1,44 @@
+﻿@page "/impedance"
+<PageTitle>患者管理</PageTitle>
+
+<RadzenText class="mb-2" Text="阻抗测量" TextStyle="TextStyle.H6"></RadzenText>
+<RadzenCard class="mb-2">
+   <RadzenStack Orientation="Orientation.Vertical">
+      <RadzenRow>
+         <RadzenColumn Size="1"><RadzenText Text="正极"></RadzenText></RadzenColumn>
+         <RadzenColumn Size="11"> <RadzenDropDown @bind-Value="@positivePole" Data="@points"/></RadzenColumn>
+      </RadzenRow>
+      <RadzenRow>
+         <RadzenColumn Size="1"><RadzenText Text="负极" /></RadzenColumn>
+         <RadzenColumn Size="11">
+            <RadzenCheckBoxList @bind-Value="@negativePoles" TValue="int">
+               <Items>
+                  @for (var i = 0; i < 16; i++)
+                  {
+                     var value = i;
+                     var text = $"触点 {i + 1:D2}";
+                     <RadzenCheckBoxListItem Text="@text" Value="@value"/>
+                  }
+               </Items>
+            </RadzenCheckBoxList>
+         </RadzenColumn>
+      </RadzenRow>
+   </RadzenStack>
+</RadzenCard>
+<RadzenButton class="mb-2" Text="开始测量"></RadzenButton>
+
+@code {
+   string positivePole = "触点 1";
+   List<string> points = [];
+   IEnumerable<int> negativePoles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+   protected override async Task OnInitializedAsync()
+   {
+      await base.OnInitializedAsync();
+      @for (var i = 0; i < 16; i++)
+      {
+         points.Add($"触点 {i + 1:D2}");
+      }
+
+   }
+}
