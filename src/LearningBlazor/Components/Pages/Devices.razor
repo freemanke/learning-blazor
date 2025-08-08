@@ -3,6 +3,22 @@
 <PageTitle>设备管理</PageTitle>
 
 <RadzenText Text="设备管理" TextStyle="TextStyle.H6"></RadzenText>
-<RadzenCard>
-    <RadzenButton Text="设备管理"></RadzenButton>
-</RadzenCard>
+<RadzenAccordion>
+    <Items>
+        <RadzenAccordionItem Text="设备版本：1.0.0" Icon="account_balance_wallet" CollapseTitle="Collapse orders."
+                             ExpandTitle="Expand orders." CollapseAriaLabel="Collapse the order details."
+                             ExpandAriaLabel="Expand the order details.">
+            Details for Orders
+        </RadzenAccordionItem>
+        <RadzenAccordionItem Text="设备型号" Icon="account_box" CollapseTitle="Collapse employees."
+                             ExpandTitle="Expand employees." CollapseAriaLabel="Collapse the employee details."
+                             ExpandAriaLabel="Expand the employee details.">
+            Details for Employees
+        </RadzenAccordionItem>
+        <RadzenAccordionItem Text="设备参数" Icon="accessibility" CollapseTitle="Collapse customers."
+                             ExpandTitle="Expand customers." CollapseAriaLabel="Collapse the customer details."
+                             ExpandAriaLabel="Expand the customer details.">
+            Details for Customers
+        </RadzenAccordionItem>
+    </Items>
+</RadzenAccordion>
